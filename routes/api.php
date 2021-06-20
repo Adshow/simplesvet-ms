@@ -26,3 +26,5 @@ Route::get('list-patologia', [PatologiaController::class,'list']);
 Route::get('shelve-patologia/{patologia_id}', [PatologiaController::class,'shelve']);
 
 Route::get('get-patologia/{patologia_id}', [PatologiaController::class,'get']);
+
+Route::get('history-patologia/{patologia_id}', [PatologiaController::class,'history']);

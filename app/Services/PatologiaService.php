@@ -69,4 +69,17 @@ class PatologiaService
         else
             return response()->json('Erro ao atualizar patologia!', 500);
     }
+
+    public function history($patologia_id)
+    {
+        if(!$patologia_id)
+            return response()->json('É necessário enviar uma patologia válida', 500);
+
+        $historico = $this->PatologiaRepository->history($patologia_id);
+        
+        if($historico)
+            return $historico;
+        else
+            return response()->json('Erro ao buscar historico de patologia!', 500);
+    }
 }

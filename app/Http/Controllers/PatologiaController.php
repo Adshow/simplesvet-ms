@@ -43,4 +43,9 @@ class PatologiaController extends Controller
     {
         return $this->PatologiaService->get($patologia_id);
     }
+
+    public function history($patologia_id)
+    {
+        return $this->PatologiaService->history($patologia_id);
+    }
 }

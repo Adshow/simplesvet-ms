@@ -115,4 +115,17 @@ class PatologiaRepository
             return false;
          }
     }
+
+    public function history($patologia_id)
+    {
+        $historico = PatologiaAudit::where('patologia_id', $patologia_id)->orderBy('id', 'ASC')->get();
+        
+        foreach($historico as $acao)
+        {
+            $acao->autor = PatologiaAudit::find($acao->id)->user->name;
+            $acao->patologia = PatologiaAudit::find($acao->id)->patologia->nome;
+        }
+
+        return $historico;
+    }
 }
