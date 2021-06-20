@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Services\PatologiaService;
 use App\Http\Requests\StorePatologiaPostRequest;
+use App\Http\Requests\UpdatePatologiaPostRequest;
 
 class PatologiaController extends Controller
 {
@@ -16,6 +17,11 @@ class PatologiaController extends Controller
     public function store(StorePatologiaPostRequest $request)
     {
         return $this->PatologiaService->store($request);
+    }
+
+    public function update(UpdatePatologiaPostRequest $request)
+    {
+        return $this->PatologiaService->update($request);
     }
 
     public function list()

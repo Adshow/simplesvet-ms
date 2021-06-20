@@ -61,4 +61,12 @@ class PatologiaService
         else
             return response()->json('Erro ao buscar patologia!', 500);
     }
+
+    public function update($request)
+    {
+        if($this->PatologiaRepository->update($request))
+            return response()->json('Patologia atualizada com sucesso!', 200);
+        else
+            return response()->json('Erro ao atualizar patologia!', 500);
+    }
 }

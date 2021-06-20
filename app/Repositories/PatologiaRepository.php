@@ -85,4 +85,34 @@ class PatologiaRepository
         else
             return false;
     }
+
+    public function update($request)
+    {
+        try {
+
+            \DB::beginTransaction();
+        
+            $patologia = Patologia::where('id', $request->id)->firstOrFail();
+
+            $patologia->nome = $request->nome;
+            $patologia->descricao = $request->descricao;
+            $patologia->save();
+
+            $audit = new PatologiaAudit();
+
+            $audit->user_id = $request->user_id;
+            $audit->patologia_id = $request->id;
+            $audit->acao = 'ATUALIZOU';
+
+            $audit->save();
+
+            \DB::commit();
+            return true;
+        }
+        catch(\Exception $e){
+            dd($e);
+            \DB::rollback();
+            return false;
+         }
+    }
 }
