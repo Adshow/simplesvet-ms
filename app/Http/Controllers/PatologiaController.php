@@ -17,4 +17,9 @@ class PatologiaController extends Controller
     {
         return $this->PatologiaService->store($request);
     }
+
+    public function list()
+    {
+        return $this->PatologiaService->list();
+    }
 }

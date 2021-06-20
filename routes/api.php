@@ -16,3 +16,5 @@ use App\Http\Controllers\PatologiaController;
 */
 
 Route::post('store-patologia', [PatologiaController::class,'store']);
+
+Route::get('list-patologia', [PatologiaController::class,'list']);

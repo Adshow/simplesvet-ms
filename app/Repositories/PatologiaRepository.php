@@ -31,4 +31,9 @@ class PatologiaRepository
             return false;
          }
     }
+    
+    public function list()
+    {
+        return Patologia::where('ativo', true)->get();
+    }
 }

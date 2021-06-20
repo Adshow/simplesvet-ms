@@ -18,7 +18,6 @@ class CreatePatologiasTable extends Migration
             $table->string('nome', 100);
             $table->text('descricao');
             $table->boolean('ativo')->default(true);
-            $table->boolean('arquivado')->default(true);
             $table->timestamps();
         });
     }

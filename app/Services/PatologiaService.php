@@ -17,4 +17,14 @@ class PatologiaService
         else
             return response()->json('Erro ao salvar patologia!', 500);
     }
+
+    public function list()
+    {
+        $patologias = $this->PatologiaRepository->list();
+        
+        if($patologias)
+            return $patologias;
+        else
+            return response()->json('Erro ao listar patologias!', 500);
+    }
 }
