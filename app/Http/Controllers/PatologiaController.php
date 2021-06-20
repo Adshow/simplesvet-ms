@@ -22,4 +22,9 @@ class PatologiaController extends Controller
     {
         return $this->PatologiaService->list();
     }
+
+    public function shelve($patologia_id)
+    {
+        return $this->PatologiaService->shelve($patologia_id);
+    }
 }
