@@ -48,4 +48,17 @@ class PatologiaService
         else
             return response()->json('Erro ao filtrar patologias!', 500);
     }
+
+    public function get($patologia_id)
+    {
+        if(!$patologia_id)
+            return response()->json('É necessário enviar uma patologia válida', 500);
+
+        $patologia = $this->PatologiaRepository->get($patologia_id);
+        
+        if($patologia)
+            return $patologia;
+        else
+            return response()->json('Erro ao buscar patologia!', 500);
+    }
 }

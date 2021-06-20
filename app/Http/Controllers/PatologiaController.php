@@ -32,4 +32,9 @@ class PatologiaController extends Controller
     {
         return $this->PatologiaService->filter($request);
     }
+
+    public function get($patologia_id)
+    {
+        return $this->PatologiaService->get($patologia_id);
+    }
 }

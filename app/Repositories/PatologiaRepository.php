@@ -75,4 +75,14 @@ class PatologiaRepository
                     ['nome', 'like', '%'.$request->nome.'%'],
                     ])->orderBy('nome', 'ASC')->get();
     }
+
+    public function get($patologia_id)
+    {
+        $patologia = Patologia::where('id', $patologia_id)->firstOrFail();
+
+        if($patologia)
+            return $patologia;
+        else
+            return false;
+    }
 }
