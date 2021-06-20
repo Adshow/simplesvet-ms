@@ -33,7 +33,7 @@ class PatologiaRepository
     
     public function list()
     {
-        return Patologia::where('ativo', true)->get();
+        return Patologia::where('ativo', true)->orderBy('nome', 'ASC')->get();
     }
 
     public function shelve($patologia_id)
@@ -63,5 +63,16 @@ class PatologiaRepository
             \DB::rollback();
             return false;
          }
+    }
+
+    public function filter($request)
+    {
+        if(empty($request->nome))
+            return Patologia::where('ativo', $request->ativo)->orderBy('nome', 'ASC')->get();
+        else
+            return Patologia::where([
+                    ['ativo', $request->ativo],
+                    ['nome', 'like', '%'.$request->nome.'%'],
+                    ])->orderBy('nome', 'ASC')->get();
     }
 }

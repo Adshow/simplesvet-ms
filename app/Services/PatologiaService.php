@@ -38,4 +38,14 @@ class PatologiaService
         else
             return response()->json('Erro ao arquivar patologia!', 500);
     }
+
+    public function filter($request)
+    {
+        $patologias = $this->PatologiaRepository->filter($request);
+
+        if($patologias)
+            return $patologias;
+        else
+            return response()->json('Erro ao filtrar patologias!', 500);
+    }
 }

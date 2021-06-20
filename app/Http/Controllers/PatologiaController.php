@@ -27,4 +27,9 @@ class PatologiaController extends Controller
     {
         return $this->PatologiaService->shelve($patologia_id);
     }
+
+    public function filter(Request $request)
+    {
+        return $this->PatologiaService->filter($request);
+    }
 }
